@@ -1,0 +1,10 @@
+Cybersecurity in E-commerce: Combatting Fake Online Stores
+
+	Na podstawie danych uzyskanych ze strony sklepu (zeskrapować?). Trzeba odpytać publiczne API np. KRS, CEIDG ii zweryfkiować istnienie I żetelność sprzedawcy. Ze strony najlepiej pozyskać numer NIP, numer KRS, nr. Telefonu, imie nazwisko właściciela. 
+
+	Poza sprawdzaniem w bazach przedsiębiorców należy sprawdzić certyfikat domeny, czy korzysta z https, na kogo zarejestrowana jest domena, czy zertyfikact jest aktywny, na jakie inne strony przekierowuje.
+
+	Można spróbować zweryfikować sposoby płatności oferowane przez sklep, czy przekierowują na sprawwdzone strony płatnościowe czy podstawione? 
+
+Do zrobienia:
+	- znaleźć otawrte API w których można sprawdzać dane o przedsiębiorstwach, jakie dane zwracają, jakich potrzebują do wyszukiwania?
