@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, redirect, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -24,11 +24,29 @@ with app.app_context():
     db.create_all()
 
 
-@app.route("/")
-def hello_world():
+@app.get("/")
+def index():
     return render_template("index.html")
 
 
+# TODO: STRIP URL
+@app.post("/")
+def index_post():
+    url = request.form.get("url", type=str)
+    if url is None:
+        return "Bad request", 400
+
+    queue.push(url)
+    return redirect("/site/" + url)
+
+
+@app.get("/site/<path:url>")
+def site(url: str):
+    site = Site.query.filter_by(url=url).first()
+    return render_template("results.html", site=site)
+
+
+# API ROUTES
 @app.post("/api/site")
 def add_site_to_queue():
     url = request.form.get("url", type=str)
@@ -56,13 +74,12 @@ def comment(url: str):
     if content is None or is_positive is None:
         return "Invalid request", 400
 
-    new_comment = Comment(
-        content=content,
-        positive=is_positive,
-        site_id=site.id,
-    )
+    new_comment = Comment()
+    new_comment.content = content
+    new_comment.positive = is_positive
+    new_comment.site_id = site.id
 
     db.session.add(new_comment)
     db.session.commit()
 
-    return ""
+    return "ok :)"

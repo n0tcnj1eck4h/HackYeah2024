@@ -49,6 +49,12 @@ class ScrapeQueue:
             self._scrape(url)
 
     def push(self, url):
+        from models import Site
+
+        site = Site.query.filter_by(url=url).first()
+        if site is not None:
+            return ""
+
         self.queue.insert(0, url)
         return ""
 
@@ -68,8 +74,10 @@ class ScrapeQueue:
         with self.app.app_context():
             from models import Site
 
-            bogus_site = Site(
-                url=url, trust_score=1, date_added=datetime.datetime.now()
-            )
+            bogus_site = Site()
+            bogus_site.url = url
+            bogus_site.trust_score = 0
+            bogus_site.date_added = datetime.datetime.now()
+
             db.session.add(bogus_site)
             db.session.commit()

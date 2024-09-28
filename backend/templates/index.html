@@ -1,20 +1,49 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kabanos</title>
-    <link href="/static/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <h1>Super sprawdzarka wierzytelności</h1>
-    logo tutaj...
-    <form id="tb" action="/queue" method="POST" target="dummyframe">
-      <input id="url_box" type="text" name="url" value="" />
-      <input type="submit" />
+{% extends 'base.html' %} {% block content %}
+<div class="urlBar">
+  <img src="static/kabanoslogo.png" alt="Logo" />
+  <h1>KABANOS</h1>
+  <div class="typeField">
+    <form method="POST">
+      <input
+        type="text"
+        name="url"
+        placeholder="Wklej lub wpisz tu link do strony"
+      />
+      <button>Sprawdź stronę</button>
     </form>
-    <span id="below"></span>
-    <script src="/static/script.js"></script>
-    <iframe name="dummyframe" id="dummyframe" style="display: none"></iframe>
-  </body>
-</html>
+  </div>
+</div>
+<div class="liveFeed">
+  <div class="stats">
+    <div class="statsTitle">
+      <h1 class="titleSymbol">*</h1>
+      <h1>Statystyki</h1>
+    </div>
+    <div
+      class="statsGraph"
+      style="
+        background-image: linear-gradient(
+          to right,
+          #60d394,
+          #60d394 33%,
+          #ee6055 33%,
+          #ee6055 66%,
+          #ffd97d 66%,
+          #ffd97d
+        );
+      "
+    ></div>
+    <div class="statsContent">
+      <div class="safeItems">Bezpieczne strony: <span>1</span></div>
+      <div class="unsafeItems">Niebezpieczne strony: <span>1</span></div>
+      <div class="unknownItems">
+        Strony z nieznanym statusem bezpieczeństwa: <span>1</span>
+      </div>
+    </div>
+  </div>
+  <h2 class="feedTitle">Ostatnio sprawdzone strony</h2>
+  <div>{{ liveFeedItem('stronka 1', '2 minuty temu', 'feedSafe') }}</div>
+  <div>{{ liveFeedItem('stronka 2', '3 godziny temu', 'feedUnsafe') }}</div>
+  <div>{{ liveFeedItem('stronka 3', '7 godzin temu', 'feedUnknown') }}</div>
+</div>
+{% endblock %}

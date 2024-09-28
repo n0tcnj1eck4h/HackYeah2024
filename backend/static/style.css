@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "M PLUS 1 Code", monospace;
+    color: #adadad;
+}
+
+body {
+    background-color: black;
+}
+
+.kabanosTitle {
+    display: flex;
+    margin: 2rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
+}
+
+.kabanosTitle div {
+    display: flex;
+    gap: 2em;
+}
+
+.kabanosTitle p {
+    margin-left: 3em;
+}
+
+.kabanosTitle h1 {
+    color: #a594fd;
+}
+.statsTitle {
+    display: flex;
+    gap: 2em;
+}
+
+.statsTitle h1 {
+    color: #a594fd;
+}
+
+.urlBar {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 3rem;
+    border: 2px solid #2f2f2f;
+    margin: 40em;
+    margin-top: 5em;
+    border-radius: 8px;
+    margin-bottom: 5em;
+}
+
+.urlBar img {
+    width: 8rem;
+    margin: auto;
+}
+
+.urlBar h1 {
+    text-align: center;
+}
+
+.urlBar input {
+    border: 2px solid #2f2f2f;
+    border-radius: 8px;
+    background-color: transparent;
+    margin-top: 2rem;
+    font-size: 1em;
+    padding: 1em;
+    width: 100%;
+}
+
+.urlBar input:focus {
+    border: 2px solid #adadad;
+    outline: none;
+}
+
+.typeField {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.typeField button {
+    margin-top: 2rem;
+    height: 3.5rem;
+    border-radius: 8px;
+    background-color: #adadad;
+    border: 2px solid #2f2f2f;
+    color: #2f2f2f;
+    transition: 0.3s;
+    padding: 0.5em;
+}
+
+.typeField button:hover {
+    transition: 0.3s;
+    background-color: #a594fd;
+}
+
+.feedTitle {
+    text-align: center;
+}
+
+.liveFeed {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 6rem;
+    padding-top: 2em;
+    border: 2px solid #2f2f2f;
+    margin: 30em;
+    margin-top: 2em;
+    border-radius: 8px;
+    background-color: transparent;
+    gap: 2em;
+}
+
+.feedStatus {
+    padding: 0.5em;
+    border-radius: 100%;
+}
+
+.statsGraph {
+    width: 100%;
+    height: 0.5em;
+    margin: 1em;
+    border-radius: 8px;
+}
+
+.safeItems span {
+    color:#60d394;
+}
+
+.unsafeItems span {
+    color:#ee6055;
+}
+
+.unknownItems span {
+    color:#ffd97d
+}
+
+.feedSafe {
+    background-color: #60d394;
+}
+
+.feedUnsafe {
+    background-color: #ee6055;
+}
+
+.feedUnknown {
+    background-color: #ffd97d;
+}
+
+.feedUrl {
+    width: 100%;
+}
+
+.feedItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    border-bottom: 1px solid #adadad;
+}
+
+.feedTimestamp {
+    text-align: center;
+}
+
+.feedDropdownButton {
+    color: #adadad;
+    width: 2.75em;
+    height: 2em;
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
+}
+
+.feedDropdown ul li {
+    list-style: none;
+}
+
+.feedDropdown {
+    display: flex;
+    justify-content: space-between;
+    margin: 1em;
+}
+
+.result {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 6rem;
+    padding-top: 2em;
+    border: 2px solid #2f2f2f;
+    margin: 30em;
+    margin-top: 2em;
+    border-radius: 8px;
+    background-color: transparent;
+    gap: 2em;
+}
+
+.resultContent ul {
+    list-style: none;
+}
+
+.resultVerdict.safeItems {
+    border-bottom: 2px solid #60d394;
+    padding-bottom: 0.5em;
+}
+
+.resultVerdict.unsafeItems {
+    border-bottom: 2px solid #ee6055;
+    padding-bottom: 0.5em;
+}
+
+.resultVerdict.unknownItems {
+    border-bottom: 2px solid #ffd97d;
+    padding-bottom: 0.5em;
+}
+
+.resultVerdict a {
+    text-decoration: underline;
+}
+
+.commentField {
+    margin-bottom: 1em;
+}
+
+.commentField input,
+.commentField textarea {
+    background-color: transparent;
+    border: 2px solid #2f2f2f;
+    border-radius: 8px;
+    font-size: 1em;
+    width: 50%;
+    padding: 0.5em;
+    margin-top: 0.5em;
+}
+
+.commentField input:hover {
+    border: 2px solid #adadad;
+}
+
+.authorInfo {
+    font-size: 0.75em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.submitComment {
+    border-bottom: 2px solid #2f2f2f;
+    padding-bottom: 2em;
+}
+
+.verdictField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+}
+
+.verdictField p {
+    margin-bottom: 1em;
+}
+
+.verdictField input[type="radio"] {
+    appearance: none;
+    background-color: #adadad;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.verdictField label {
+    border-radius: 8px;
+    padding: 0.5em;
+}
+
+.verdictField label:checked {
+    border: 2px solid red;
+}
+
+#safeVerdict:checked {
+    background-color:#60d394;
+    transition: 0.3s;
+}
+
+#unsafeVerdict:checked {
+    background-color:#ee6055;
+    transition: 0.3s;
+}
+
+#unknownVerdict:checked {
+    background-color:#ffd97d;
+    transition: 0.3s;
+}
+
+.commentList {
+    margin-top: 4em;
+}
+
+.commentItem {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid #2f2f2f;
+    padding-bottom: 2em;
+}
+
+.commentHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.commentContent {
+    margin-top: 1em;
+}
+
+.commentVerdict {
+    margin-top: 1em;
+}
+
+.submitButton {
+    margin-top: 2rem;
+    height: 3.5rem;
+    border-radius: 8px;
+    background-color: #adadad;
+    border: 2px solid #2f2f2f;
+    color: #2f2f2f;
+    transition: 0.3s;
+    padding: 0.5em;
+}
+
+.submitButton:hover {
+    transition: 0.3s;
+    background-color: #a594fd;
+}
+
+@media screen and (max-width: 1000px) {
+    .urlBar {
+        width: auto;
+        margin: 0;
+        margin-top: 3em;
+        padding: 0;
+        padding-top: 2em;
+        padding-bottom: 2em;
+    }
+
+    .urlBar input {
+        width: 100%;
+    }
+
+    .typeField {
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+
+    .liveFeed {
+        width: auto;
+        margin: 0;
+        margin-top: 3em;
+        padding: 0;
+        padding: 2em;
+    }
+
+    .statsGraph {
+        margin: 0;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .feedItem {
+        width: 100%;
+    }
+
+    .result {
+        width: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .resultContent {
+        margin: 2em;
+    }
+
+    .comments {
+        margin: 2em;
+    }
+}
+
+@media screen and (max-width: 1700px) and (min-width: 1501px) {
+    .typeField {
+        flex-direction: column;
+    }
+
+    .urlBar {
+        margin-left: 30em;
+        margin-right: 30em;
+    }
+
+    .liveFeed {
+        margin-left: 20em;
+        margin-right: 20em;
+    }
+
+    .result {
+        margin-left: 20em;
+        margin-right: 20em;
+    }
+}
+
+
+@media screen and (max-width: 1500px) and (min-width: 1251px) {
+    .typeField {
+        flex-direction: column;
+    }
+
+    .urlBar {
+        margin-left: 20em;
+        margin-right: 20em;
+    }
+    .liveFeed {
+        margin-left: 20em;
+        margin-right: 20em;
+    }
+    .result {
+        margin-left: 15em;
+        margin-right: 15em;
+    }
+}
+
+@media screen and (max-width: 1250px) and (min-width: 1001px) {
+    .typeField {
+        flex-direction: column;
+    }
+
+    .urlBar {
+        margin-left: 20em;
+        margin-right: 20em;
+    }
+    .liveFeed {
+        margin-left: 10em;
+        margin-right: 10em;
+    }
+    .result {
+        margin-left: 10em;
+        margin-right: 10em;
+    }
+}

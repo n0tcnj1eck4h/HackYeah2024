@@ -1,0 +1,64 @@
+{% macro liveFeedItem(text, timestamp, safetyclass) -%}
+<div>
+  <div class="feedItem">
+    <div class="feedStatus {{safetyclass}}"></div>
+    <p class="feedUrl">{{text}}</p>
+    <p class="feedTimestamp">{{timestamp}}</p>
+    <div class="feedDropdownButton">⌄</div>
+  </div>
+  <div class="feedDropdown" style="display: none">
+    <ul>
+      <li>gowno: 2</li>
+      <li>kupa: 1</li>
+      <li>kleksik: 5</li>
+      <li>gacie: obsrane</li>
+    </ul>
+    <div class="safeItems">
+      <span>dlatego ta strona jest BEZPIECZNA!</span>
+    </div>
+  </div>
+</div>
+{%- endmacro %}
+<!--  -->
+{% macro comment(author, content, positive, timestamp) -%}
+<div class="commentItem">
+  <div class="commentHeader">
+    <h3 class="commentAuthor">{{author}}</h3>
+    <h3 class="commentTimestamp">{{timestamp}}</h3>
+  </div>
+  <p class="commentContent">{{content}}</p>
+  <p
+    class="commentVerdict {% if positive %} safeItems {% else %} unsafeItems {% endif %}"
+  >
+    Opinia:
+    <span
+      >{% if positive %} strona bezpieczna {% else %} strona niebezpieczna {%
+      endif %}</span
+    >
+  </p>
+</div>
+{%- endmacro %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KABANOS</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="kabanosTitle">
+      <div>
+        <h1 class="titleSymbol">*</h1>
+        <h1>Sprawdź czy dana strona jest bezpieczna.</h1>
+      </div>
+      <p>
+        Dzięki naszej stronie sprawdzisz czy dana strona jest zarejestrowaną
+        firmą w KRS czy coś takiego weźcie to wypełnijcie prawdą bo nwm o co tu
+        cho
+      </p>
+    </div>
+    <div>{% block content %}{% endblock %}</div>
+  </body>
+</html>

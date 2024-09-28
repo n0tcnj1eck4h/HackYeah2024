@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block content %}
+<div class="result">
+    <div class="kabanosTitle">
+        <div>
+            <h1 class="titleSymbol">*</h1>
+            <h1>Wynik</h1>
+        </div>
+    <h3 class="safeItems resultVerdict">Strona {{site.url}} jest <span>bezpieczna</span>.</p>
+    </div>
+    <div class="resultContent">
+        <ul>
+            <li>csotam: 2</li>
+            <li>cos: 1</li>
+            <li>sdfsdlkfj: 5</li>
+            <li>g: dfdfd</li>
+        </ul>
+    </div>
+    <div class="kabanosTitle">
+        <div>
+            <h1 class="titleSymbol">*</h1>
+            <h1>Opinie</h1>
+        </div>
+    </div>
+    <div class="comments">
+        <div class="submitComment">
+            <form action="">
+                <p>Autor:</p>
+                <div class="commentField">
+                    <input type="text" name="author" placeholder="Twoje imię i nazwisko lub ksywa">
+                </div>
+                <p class="authorInfo">
+                    Jeśli zostawisz to pole puste przypiszemy Ci losową ksywę.
+                </p>
+                <p>Twój komentarz:</p>
+                <div class="commentField">
+                    <textarea name="comment" rows="4" required></textarea>
+                </div>
+                <div class="verdictField">
+                    <p>Twoja opinia:</p>
+                    <div class="radioItem">
+                        <input type="radio" name="xd" id="safeVerdict" value="safe">
+                        <label class="safeItems" for="safeVerdict"><span>strona bezpieczna</span></label>
+                    </div>
+                    <br>
+                    <div class="radioItem">
+                        <input type="radio" name="xd" id="unsafeVerdict" value="unsafe">
+                        <label class="unsafeItems" for="unsafeVerdict"><span>strona niebezpieczna</span></label>
+                    </div>
+                    <br>
+                    <div class="radioItem">
+                        <input type="radio" name="xd" id="unknownVerdict" value="unknown">
+                        <label class="unknownItems" for="unsafeVerdict"><span>trudno powiedzieć</span></label>
+                    </div>
+                </div>
+                <button class="submitButton">Wyślij komentarz</button>
+            </form>
+        </div>
+        <div class="commentList">
+            {{ comment("Anonimowy", "Ta stronka to podstęp", false, "2 godziny temu") }}
+            {{ comment("Anonimowy", "Ta stronka jest superowa", true, "3 godziny temu") }}
+        </div>
+    </div>
+</div>
+{% endblock %}
