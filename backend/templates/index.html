@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title></title>
-    <link href="style.css" rel="stylesheet" />
+    <title>Kabanos</title>
+    <link href="/static/style.css" rel="stylesheet" />
   </head>
   <body>
     <h1>Super sprawdzarka wierzytelności</h1>
     logo tutaj...
-    <form action="/queue" method="POST">
-      <input type="text" name="url" value="" />
+    <form id="tb" action="/queue" method="POST" target="dummyframe">
+      <input id="url_box" type="text" name="url" value="" />
       <input type="submit" />
     </form>
+    <span id="below"></span>
+    <script src="/static/script.js"></script>
+    <iframe name="dummyframe" id="dummyframe" style="display: none"></iframe>
   </body>
 </html>
