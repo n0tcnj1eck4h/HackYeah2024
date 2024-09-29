@@ -43,7 +43,33 @@ def index_post():
 @app.get("/site/<path:domain>")
 def site(domain: str):
     site = Site.query.filter_by(domain=domain).first()
-    return render_template("results.html", site=site)
+    if site is None:
+        return "404", 404
+    comments = Comment.query.filter_by(site_id=site.id).all()
+    return render_template("results.html", site=site, comments=comments)
+
+
+@app.post("/site/<path:domain>")
+def post_comment(domain: str):
+    content = request.form.get("content", type=str)
+    if content is None:
+        return "bad request", 400
+
+    vote = request.form.get("xd", type=str)
+    if vote not in ["unsafe", "safe", "unsure"]:
+        return "bad request", 400
+
+    site = Site.query.filter_by(domain=domain).first()
+    if site is None:
+        return "404", 404
+
+    comment = Comment()
+    comment.content = content
+    comment.vote = vote
+    comment.site_id = site.id
+    db.session.add(comment)
+    db.session.commit()
+    return redirect("/site/" + domain)
 
 
 # API ROUTES

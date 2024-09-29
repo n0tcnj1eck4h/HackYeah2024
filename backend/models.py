@@ -4,7 +4,7 @@ from app import db
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String, unique=False, nullable=False)
-    positive = db.Column(db.Boolean, unique=False, nullable=False)
+    vote = db.Column(db.String, unique=False, nullable=False)
     site_id = db.Column(db.Integer, nullable=False)
 
 

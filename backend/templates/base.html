@@ -20,20 +20,18 @@
 </div>
 {%- endmacro %}
 <!--  -->
-{% macro comment(author, content, positive, timestamp) -%}
+{% macro comment(c) -%}
 <div class="commentItem">
   <div class="commentHeader">
-    <h3 class="commentAuthor">{{author}}</h3>
-    <h3 class="commentTimestamp">{{timestamp}}</h3>
+    <h3 class="commentAuthor">Anonymous</h3>
+    <h3 class="commentTimestamp">2 godziny temu</h3>
   </div>
-  <p class="commentContent">{{content}}</p>
-  <p
-    class="commentVerdict {% if positive %} safeItems {% else %} unsafeItems {% endif %}"
-  >
+  <p class="commentContent">{{ c.content }}</p>
+  <p class="commentVerdict {{ c.vote + 'Items' }}">
     Opinia:
     <span
-      >{% if positive %} strona bezpieczna {% else %} strona niebezpieczna {%
-      endif %}</span
+      >{% if c.vote == 'safe' %} strona bezpieczna {% elif c.vote == 'unsafe' %}
+      strona niebezpieczna {% else %} brak pewności {% endif %}</span
     >
   </p>
 </div>

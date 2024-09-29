@@ -25,22 +25,15 @@
     </div>
     <div class="comments">
         <div class="submitComment">
-            <form action="">
-                <p>Autor:</p>
-                <div class="commentField">
-                    <input type="text" name="author" placeholder="Twoje imię i nazwisko lub ksywa">
-                </div>
-                <p class="authorInfo">
-                    Jeśli zostawisz to pole puste przypiszemy Ci losową ksywę.
-                </p>
+            <form method="POST">
                 <p>Twój komentarz:</p>
                 <div class="commentField">
-                    <textarea name="comment" rows="4" required></textarea>
+                    <textarea name="content" rows="4" required></textarea>
                 </div>
                 <div class="verdictField">
                     <p>Twoja opinia:</p>
                     <div class="radioItem">
-                        <input type="radio" name="xd" id="safeVerdict" value="safe">
+                        <input type="radio" name="xd" id="safeVerdict" value="safe" required>
                         <label class="safeItems" for="safeVerdict"><span>strona bezpieczna</span></label>
                     </div>
                     <br>
@@ -50,16 +43,17 @@
                     </div>
                     <br>
                     <div class="radioItem">
-                        <input type="radio" name="xd" id="unknownVerdict" value="unknown">
-                        <label class="unknownItems" for="unsafeVerdict"><span>trudno powiedzieć</span></label>
+                        <input type="radio" name="xd" id="unsureVerdict" value="unsure">
+                        <label class="unsureItems" for="unsureVerdict"><span>trudno powiedzieć</span></label>
                     </div>
                 </div>
                 <button class="submitButton">Wyślij komentarz</button>
             </form>
         </div>
         <div class="commentList">
-            {{ comment("Anonimowy", "Ta stronka to podstęp", false, "2 godziny temu") }}
-            {{ comment("Anonimowy", "Ta stronka jest superowa", true, "3 godziny temu") }}
+            {% for c in comments %}
+                {{ comment(c) }}
+            {% endfor %}
         </div>
     </div>
 </div>

@@ -135,7 +135,7 @@ body {
   color: #ee6055;
 }
 
-.unknownItems span {
+.unsureItems span {
   color: #ffd97d;
 }
 
@@ -147,7 +147,7 @@ body {
   background-color: #ee6055;
 }
 
-.feedUnknown {
+.feedUnsure {
   background-color: #ffd97d;
 }
 
@@ -214,7 +214,7 @@ body {
   padding-bottom: 0.5em;
 }
 
-.resultVerdict.unknownItems {
+.resultVerdict.unsureItems {
   border-bottom: 2px solid #ffd97d;
   padding-bottom: 0.5em;
 }
@@ -291,7 +291,7 @@ body {
   transition: 0.3s;
 }
 
-#unknownVerdict:checked {
+#unsureVerdict:checked {
   background-color: #ffd97d;
   transition: 0.3s;
 }

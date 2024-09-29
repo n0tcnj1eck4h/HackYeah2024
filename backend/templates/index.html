@@ -36,7 +36,7 @@
     <div class="statsContent">
       <div class="safeItems">Bezpieczne strony: <span>1</span></div>
       <div class="unsafeItems">Niebezpieczne strony: <span>1</span></div>
-      <div class="unknownItems">
+      <div class="unsureItems">
         Strony z nieznanym statusem bezpieczeństwa: <span>1</span>
       </div>
     </div>
@@ -44,6 +44,6 @@
   <h2 class="feedTitle">Ostatnio sprawdzone strony</h2>
   <div>{{ liveFeedItem('stronka 1', '2 minuty temu', 'feedSafe') }}</div>
   <div>{{ liveFeedItem('stronka 2', '3 godziny temu', 'feedUnsafe') }}</div>
-  <div>{{ liveFeedItem('stronka 3', '7 godzin temu', 'feedUnknown') }}</div>
+  <div>{{ liveFeedItem('stronka 3', '7 godzin temu', 'feedUnsure') }}</div>
 </div>
 {% endblock %}
