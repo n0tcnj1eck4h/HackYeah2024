@@ -50,6 +50,9 @@ class ScrapeQueue:
         if site is not None:
             return
 
+        if domain in self.queue:
+            return
+
         self.queue.insert(0, domain)
 
     def task_status(self, domain: str) -> Tuple[ScrapingState, Optional[Site]]:

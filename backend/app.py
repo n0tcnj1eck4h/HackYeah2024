@@ -15,7 +15,7 @@ from models import Site, Comment
 
 db.init_app(app)
 
-from scrapequeue import ScrapeQueue
+from scrapequeue import ScrapeQueue, ScrapingState
 
 queue = ScrapeQueue(app)
 queue.start_thread()
@@ -73,44 +73,42 @@ def post_comment(domain: str):
 
 
 # API ROUTES
-# @app.post("/api/site")
-# def add_site_to_queue():
-#     url = request.form.get("url", type=str)
-#     if url is None:
-#         return "Bad request", 400
-#
-#     urlp = urlparse(url)
-#     domain = urlp.netloc
-#
-#     queue.push(domain)
-#     return "oki"
-#
-#
-# @app.get("/api/site/<path:url>")
-# def check_task_status(url: str):
-#     task = queue.task_status(url)
-#     return {"state": task[0].name, "data": "data will be here eventually"}
-#
-#
-# @app.post("/api/site/<path:url>")
-# def comment(url: str):
-#     urlp = urlparse(url)
-#     domain = urlp.netloc
-#     site = Site.query.filter_by(domain=domain).first()
-#     if site is None:
-#         return "Site not found", 404
-#
-#     content = request.form.get("content", type=str)
-#     is_positive = request.form.get("positive", type=bool)
-#     if content is None or is_positive is None:
-#         return "Invalid request", 400
-#
-#     new_comment = Comment()
-#     new_comment.content = content
-#     new_comment.positive = is_positive
-#     new_comment.site_id = site.id
-#
-#     db.session.add(new_comment)
-#     db.session.commit()
-#
-#     return "ok :)"
+@app.post("/api/site")
+def add_site_to_queue():
+    domain = request.form.get("domain", type=str)
+    if domain is None:
+        return "Bad request", 400
+
+    queue.push(domain)
+    return "oki"
+
+
+@app.get("/api/site/<path:domain>")
+def check_task_status(domain: str):
+    task = queue.task_status(domain)
+    data = None
+    site = task[1]
+
+    if site is None:
+        return "404", 404
+
+    if task[0] == ScrapingState.SCRAPED:
+        data = {
+            "id": site.id,
+            "domain": site.domain,
+            "date_added": (
+                site.date_added.strftime("%Y-%m-%d %H:%M:%S")
+                if site.date_added
+                else None
+            ),
+            "krs": site.krs,
+            "nip": site.nip,
+            "org_name": site.org_name,
+            "active_vat": site.active_vat,
+            "domain_registration": (
+                site.domain_registration.strftime("%Y-%m-%d %H:%M:%S")
+                if site.domain_registration
+                else None
+            ),
+        }
+    return {"state": task[0].name, "data": data}
