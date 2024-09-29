@@ -1,17 +1,15 @@
 {
-    "manifest_version": 3,
-    "name": "Scam Hunter",
-    "version": "0.1",
-    "description": "Something",
-    "icons": {
-        "48": "assets/icon.png"
-    },
-    "permissions": [
-        "tabs"
-    ],
-    "action": {
-        "default_icon": "assets/icon.png",
-        "default_title": "Scam hunter",
-        "default_popup": "src/popup/index.html"
-    }
+  "manifest_version": 2,
+  "name": "Scam Hunter",
+  "version": "0.1",
+  "description": "Something",
+  "icons": {
+    "48": "assets/icon.png"
+  },
+  "permissions": ["tabs"],
+  "browser_action": {
+    "default_icon": "assets/icon.png",
+    "default_title": "Scam hunter",
+    "default_popup": "src/popup/index.html"
+  }
 }
