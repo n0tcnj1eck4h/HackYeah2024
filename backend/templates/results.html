@@ -5,15 +5,17 @@
             <h1 class="titleSymbol">*</h1>
             <h1>Wynik</h1>
         </div>
-    <h3 class="safeItems resultVerdict">Strona {{site.url}} jest <span>bezpieczna</span>.</p>
+    <h3 class="safeItems resultVerdict">Witryna {{ site.domain }} jest <span>bezpieczna</span>.</p>
     </div>
     <div class="resultContent">
-        <ul>
-            <li>csotam: 2</li>
-            <li>cos: 1</li>
-            <li>sdfsdlkfj: 5</li>
-            <li>g: dfdfd</li>
-        </ul>
+ <ul>
+        <li><strong>Organization Name:</strong> {{ site.org_name if site.org_name else '?' }}</li>
+        <!-- <li><strong>Domain:</strong> {{ site.domain if site.domain else '?' }}</li> -->
+        <li><strong>KRS:</strong> {{ site.krs if site.krs else '?' }}</li>
+        <li><strong>NIP:</strong> {{ site.nip if site.nip else '?' }}</li>
+        <li><strong>Active VAT:</strong> {{ 'Yes' if site.active_vat else ('No' if site.active_vat == False else '?') }}</li>
+        <li><strong>Domain Registration Date:</strong> {{ site.domain_registration if site.domain_registration else '?' }}</li>
+    </ul>
     </div>
     <div class="kabanosTitle">
         <div>
